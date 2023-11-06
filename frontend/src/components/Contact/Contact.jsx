@@ -2,31 +2,35 @@ import React, { useContext, useRef, useState } from "react";
 import "./Contact.css";
 import emailjs from "@emailjs/browser";
 import { themeContext } from "../../Context";
+import { toast } from "react-toastify";
 const Contact = () => {
   const theme = useContext(themeContext);
   const darkMode = theme.state.darkMode;
   const form = useRef();
-  const [done, setDone] = useState(false);
   const sendEmail = (e) => {
     e.preventDefault();
-
-    emailjs
-      .sendForm(
-        "service_2mu5xtl",
-        "template_m5udu2c",
-        form.current,
-        "VLwg1ltOWvnCYAiK_"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          setDone(true);
-          form.reset();
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+  
+    const data = new FormData(form.current);
+  
+    fetch("/send-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user_name: data.get("user_name"),
+        user_email: data.get("user_email"),
+        message: data.get("message"),
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        toast.info("Thanks for Contacting me")
+        form.current.reset();
+      })
+      .catch((error) => {
+        console.error("Error sending email:", error);
+      });
   };
 
   return (
@@ -60,7 +64,6 @@ const Contact = () => {
           />
           <textarea name="message" className="user" placeholder="Message" />
           <input type="submit" value="Send" className="button" />
-          <span>{done && "Thanks for Contacting me"}</span>
           <div
             className="blur c-blur1"
             style={{ background: "var(--purple)" }}

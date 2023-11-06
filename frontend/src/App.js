@@ -2,6 +2,8 @@ import Navbar from "./components/Navbar/Navbar";
 import Intro from "./components/Intro/Intro";
 import Services from "./components/Services/Services";
 import "./App.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Experience from "./components/Experience/Experience";
 import Works from "./components/Works/Works";
 import Portfolio from "./components/Portfolio/Portfolio";
@@ -21,15 +23,18 @@ function App() {
         color: darkMode ? "white" : "",
       }}
     >
-      <Navbar />
-      <Intro />
-      <Services />
-      <Experience />
-      <Works />
-      <Portfolio />
-      {/* <Testimonial /> */}
-      <Contact />
-      <Footer />
+      <>
+        <Navbar />
+        <Intro />
+        <Services />
+        <Experience />
+        <Works />
+        <Portfolio />
+        {/* <Testimonial /> */}
+        <Contact />
+        <Footer />
+      </>
+      <ToastContainer theme={darkMode ? "dark" : "light"} />
     </div>
   );
 }
