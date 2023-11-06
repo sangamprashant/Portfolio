@@ -26,7 +26,7 @@ const Works = () => {
         <div className="awesome">
           {/* Dark Mode */}
           <span style={{ color: darkMode ? "white" : "" }}>My Work with</span>
-          <span>Brands & Clients</span>
+          <span>Technologies</span>
           <span>
             I've had the privilege to work with a diverse range of clients and
             brands,<br/> providing tailored solutions to meet their unique needs.<br/> My
