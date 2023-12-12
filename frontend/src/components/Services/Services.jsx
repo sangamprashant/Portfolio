@@ -6,7 +6,7 @@ import Glasses from "../../img/glasses.png";
 import Humble from "../../img/humble.png";
 import { themeContext } from "../../Context";
 import { motion } from "framer-motion";
-import Resume from "./resume.pdf";
+import Resume from "./Prashant.pdf";
 
 const Services = () => {
   // context
@@ -82,7 +82,7 @@ const Services = () => {
             emoji={Humble}
             heading={"Android Development"}
             detail={
-              "Java"
+              "Java and React Native"
             }
             color="rgba(252, 166, 31, 0.45)"
           />

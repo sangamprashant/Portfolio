@@ -35,6 +35,11 @@ const navbar = () => {
               </Link>
             </li>
             {/* <li>
+              <Link to="/projects"  >
+                Projects
+              </Link>
+            </li> */}
+            {/* <li>
               <Link to="testimonial" spy={true} smooth={true}>
                 Testimonial
               </Link>

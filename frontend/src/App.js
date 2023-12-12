@@ -12,30 +12,29 @@ import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 import { useContext } from "react";
 import { themeContext } from "./Context";
+import Projects from "./components/Projects/Projects";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./components/Home";
 function App() {
   const theme = useContext(themeContext);
   const darkMode = theme.state.darkMode;
   return (
-    <div
+    <BrowserRouter
       className="App"
       style={{
         background: darkMode ? "black" : "",
         color: darkMode ? "white" : "",
       }}
     >
-      <>
         <Navbar />
-        <Intro />
-        <Services />
-        <Experience />
-        <Works />
-        <Portfolio />
-        {/* <Testimonial /> */}
-        <Contact />
+      <Routes>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/projects" element={<Projects/>}/>
+        
+      </Routes>
         <Footer />
-      </>
       <ToastContainer theme={darkMode ? "dark" : "light"} />
-    </div>
+    </BrowserRouter>
   );
 }
 
